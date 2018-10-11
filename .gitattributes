@@ -1,0 +1,26 @@
+# Auto detect text files and perform LF normalization
+*               text=auto
+
+# Explicitly declare text files we want to always be normalized and converted
+# to native line endings on checkout.
+*.java          text diff=java
+*.html          text diff=html
+*.properties    text
+*.xml           text
+*.txt           text
+*.md            text
+*.css           text
+*.js            text
+*.ts            text
+*.json          text
+*.scss          text
+*.sql           text
+*.sh            text
+*.cmd           text
+*.graphml       text
+*.template      text
+*.xsd           text
+*.apt           text
+.gitattributes  text
+.gitignore      text
+Jenkinsfile     text

@@ -17,22 +17,42 @@ public class StreamsTest {
 
     @Test
     public void d5IsFirstAfterSorting() {
-        assertThat(names.stream().sorted().findFirst(), is(of("d5")));
+        assertThat(names.stream()
+                .sorted()
+                .findFirst(),
+                is(of("d5")));
     }
 
     @Test
     public void f13IsLastOfOccurancesStartingWithF() {
-        assertThat(stringsStartingWith("f").sorted().reduce((s1, s2) -> s2), is(of("f13")));
+        assertThat(stringsStartingWith("f")
+                        .sorted()
+                        .reduce((s1, s2) -> s2),
+                is(of("f13")));
+    }
+
+    @Test
+    public void allBeConcatenated() {
+        assertThat(names.stream()
+                        .sorted()
+                        .reduce((s1, s2) -> s1 + "," +s2),
+                is(of("d5,f1,f10,f107,f13,k3,z2")));
     }
 
     @Test
     public void fOccurancesSortedInReversedOrder() {
-        assertThat(stringsStartingWith("f").sorted((s1, s2) -> s1.compareTo(s2) * -1).collect(Collectors.toList()), is(asList("f13", "f107", "f10", "f1")));
+        assertThat(stringsStartingWith("f")
+                        .sorted((s1, s2) -> s1.compareTo(s2) * -1)
+                        .collect(Collectors.toList()),
+                is(asList("f13", "f107", "f10", "f1")));
     }
 
     @Test
     public void f1IsFirstOfOccurancesStartingWithF() {
-        assertThat(stringsStartingWith("f").sorted().findFirst(), is(of("f1")));
+        assertThat(stringsStartingWith("f")
+                .sorted()
+                .findFirst(),
+                is(of("f1")));
     }
 
     private Stream<String> stringsStartingWith(String filterArgument) {
